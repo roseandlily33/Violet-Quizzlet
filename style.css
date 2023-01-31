@@ -45,6 +45,7 @@ body{
     padding: 1em;
     color: var(--violet);
 }
+
 .main-content{
     display: flex;
     justify-content: center;
@@ -82,16 +83,14 @@ body{
 }
 
 /* Selecting Buttons: */
-#main-questions{
-    
-}
+
 #question{
     text-align: center;
     padding: 2em;
     font-size: var(--questions);
 
 }
-.answer-buttons{
+#answer-buttons{
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 2em;

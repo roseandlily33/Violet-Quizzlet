@@ -11,6 +11,7 @@ Coming Soon
 This was the most difficult project so far because I was building it from the ground up with no previous code to go off of. I watched a couple of videos on youtube to really grasp the concepts and what to put into the project and what goes where. 
 Link to video I used from Web Dev Simplpified:
 https://www.youtube.com/watch?v=riDzcEQbX6k
+I also got help from BCS, and tutoring.
 
 
 ## Usage:
