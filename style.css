@@ -54,15 +54,15 @@ body{
 }
 
 /* Intro: */
-.intro{
+#intro{
     text-align: center;
     margin: 40px 30px;
     padding: 2em;
 }
-.intro h1{
+#intro h1{
     font-size: var(--questions);
 }
-.intro p{
+#intro p{
     font-size: var(--answers);
 }
 .bottom{
@@ -82,10 +82,10 @@ body{
 }
 
 /* Selecting Buttons: */
-.main-questions{
+#main-questions{
     
 }
-.question{
+#question{
     text-align: center;
     padding: 2em;
     font-size: var(--questions);

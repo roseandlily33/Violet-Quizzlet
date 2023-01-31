@@ -1,14 +1,23 @@
 //Selecting the elements needs from the HTML doc
 let startBtn = document.getElementById('start-btn');
-let questionCont = document.getElementsByClassName('main-questions');
-let beginning = document.getElementsByClassName('intro');
+let questionCont = document.getElementById('main-questions');
+let beginning = document.getElementById('intro');
+let question = document.getElementById('question');
+let button1 = document.getElementById('btn-1');
+let button2 = document.getElementById('btn-2');
+let button3 = document.getElementById('btn-3');
+let button4 = document.getElementById('btn-4');
+let currentCard = 0;
+
+//Starts the game on click
+startBtn.addEventListener('click', startGame);
 
 //Questions for the quiz
 const questions = [
     {
         question: 'What direction does align-items align on?',
         answers: [
-            {answer1: 'vertical', correct: true},
+         { answer1: 'vertical', correct: true},
          { answer2: 'horizontal', correct: false},
          { answer3: 'center', correct: false},
          { answer4: 'z-index', correct: false}
@@ -59,25 +68,37 @@ const questions = [
             {answer4: '/', correct: false}
         ]
     }
-]
-//Starts the game
-startBtn.addEventListener('click', startGame());
+];
+
 
 function startGame(){
-    //putting display: none; on the start button
-    startBtn.classList.add("hide");
-    //putting display: none; on the main welcome section
-    beginning.classList.add("hide");
-    //removing display: none; on the question container
-    questionCont.classList.remove("hide");
+   startBtn.classList.add('hide');
+   beginning.classList.add('hide');
+   questionCont.classList.remove('hide');
+   
+   nextQuestion();
+   
 }
 function nextQuestion(){
-    let random = Math.floor(Math.random()* questions.length);
-    for(let i = 0; i < random; i++){
-        console.log([i]);
-    }
+    let random = Math.floor(Math.random()*questions.length);
+    //For loop?
+    question.innerText = questions[random].question;
+    //for(let i = 0; i < questions.length; i++){
+      //  let random = Math.floor(Math.random()* questions.length);
+       // question.textContent = questions[random].question;
+   // }
 
-}
+        button1.textContent = questions.answers.answer1;
+        button2.textContent = questions.answers.answer2;
+        button3.textContent = questions.answers.answer3;
+        button4.textContent = questions.answers.answer4;
+    
+        
+   }
+   
+   
 function selectAnswer(){
-
+//if(answer.correct){
+    //button1.dataset.correct = answer.correct
 }
+//}
