@@ -21,45 +21,44 @@ startBtn.addEventListener('click', startGame);
 const questions = [
     {
         question: 'What direction does align-items align on if your aligning on the horizontal axis?',
-        answer1: 'vertical', correct: true,
-        answer2: 'horizontal', correct: false,
-        answer3: 'center', correct: false,
-        answer4: 'z-index', correct: false,
-
+        answer1: 'vertical', 
+        answer2: 'horizontal', 
+        answer3: 'center', 
+        answer4: 'z-index',
+        correct: 'vertical'
     },
     {
         question: 'In this array how would you access apple: let fruit = [banana, mango, peach, apple, plum]',
-        answer1: '[2]', correct: false,
-        answer2: '[0]', correct: true,
-        answer3: '[3]', correct: false,
-        answer4: '[4]', correct: false,
-
+        answer1: '[2]', 
+        answer2: '[0]',
+        answer3: '[3]', 
+        answer4: '[4]', 
+        correct: '[0]'
     },
     {
         question: 'Which one of these means absolutley not?',
-        answer: '!=', correct: false,
-        answer: '>=', correct: false,
-        answer: '!==', correct: true,
-        answer: '===', correct: false
-
+        answer1: '!=',
+        answer2: '>=', 
+        answer3: '!==', 
+        answer4: '===', 
+        correct: '!=='
     },
     {
         question: 'What can arrays store in JavaScript?',
-
-        answer1: 'Number', correct: false,
-        answer2: 'String', correct: false,
-        answer3: 'Other Arrays', correct: false,
-        answer4: 'All of the above', correct: true,
-
-
+        answer1: 'Number', 
+        answer2: 'String', 
+        answer3: 'Other Arrays', 
+        answer4: 'All of the above', 
+        correct: 'All of the above'
     },
     {
         question: 'What should you always end a line of JavaScript with?',
 
-        answer1: '.JS', correct: false,
-        answer2: '.Js', correct: false,
-        answer3: '.js', correct: true,
-        answer4: '.jS', correct: false
+        answer1: '.JS',
+        answer2: '.Js', 
+        answer3: '.js', 
+        answer4: '.jS', 
+        correct: '.js'
 
     }
 ];
@@ -108,11 +107,20 @@ function nextQuestion() {
     button4.innerHTML = currentQuestion.answer4;
     }
     //If it is the last question to go to the score page with the score
-    button.addEventListener('click', function(){
-        if(answer === true){
+    button1.addEventListener('click', function(){
+        if(answer1 === true){
             button.style.backgroundColor = "green";
            // button.style.backgroundColor = " ";
-        } else {
+        }  else if(answer2 === true){
+            button.style.backgroundColor = 'green';
+        }
+        else if(answer3 === true){
+            button.style.backgroundColor = 'green';
+        }
+        else if(answer4 === true){
+            button.style.backgroundColor = 'green';
+        }
+        else {
             button.style.backgroundColor = "red";
             //subtract by 10 seconds
             seconds -=10;
