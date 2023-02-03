@@ -4,7 +4,11 @@ let questionCont = document.getElementById('main-questions');
 let beginningEl = document.getElementById('intro');
 let questionEl = document.getElementById('question');
 let buttonCont = document.getElementById('answer-buttons');
-//let button = document.querySelector('button');
+let button = document.querySelector('button');
+let button1 = document.getElementById('btn1');
+let button2 = document.getElementById('btn2');
+let button3 = document.getElementById('btn3');
+let button4= document.getElementById('btn4');
 let timerEl = document.getElementById('timer');
 let finalEl = document.getElementById('final');
 let scorePage = document.getElementById('score-page');
@@ -17,66 +21,52 @@ startBtn.addEventListener('click', startGame);
 const questions = [
     {
         question: 'What direction does align-items align on if your aligning on the horizontal axis?',
-        answers: [
-            { answer1: 'vertical', correct: true },
-            { answer2: 'horizontal', correct: false },
-            { answer3: 'center', correct: false },
-            { answer4: 'z-index', correct: false }
-        ]
+        answer1: 'vertical', correct: true,
+        answer2: 'horizontal', correct: false,
+        answer3: 'center', correct: false,
+        answer4: 'z-index', correct: false,
+
     },
     {
         question: 'In this array how would you access apple: let fruit = [banana, mango, peach, apple, plum]',
-        answers: [
-            { answer1: '[2]', correct: false },
-            { answer2: '[0]', correct: true },
-            { answer3: '[3]', correct: false },
-            { answer4: '[4]', correct: false }
-        ]
+        answer1: '[2]', correct: false,
+        answer2: '[0]', correct: true,
+        answer3: '[3]', correct: false,
+        answer4: '[4]', correct: false,
+
     },
     {
-        question: 'Which one of these means absolutley not?', answers: [
-            { answer1: '!=', correct: false },
-            { answer2: '>=', correct: false },
-            { answer3: '!==', correct: true },
-            { answer4: '===', correct: false }
-        ]
+        question: 'Which one of these means absolutley not?',
+        answer: '!=', correct: false,
+        answer: '>=', correct: false,
+        answer: '!==', correct: true,
+        answer: '===', correct: false
+
     },
     {
-        question: 'What can arrays store in JavaScript?', answers: [
+        question: 'What can arrays store in JavaScript?',
 
-            { answer1: 'Number', correct: false },
-            { answer2: 'String', correct: false },
-            { answer3: 'Other Arrays', correct: false },
-            { answer4: 'All of the above', correct: true }
+        answer1: 'Number', correct: false,
+        answer2: 'String', correct: false,
+        answer3: 'Other Arrays', correct: false,
+        answer4: 'All of the above', correct: true,
 
-        ]
+
     },
     {
         question: 'What should you always end a line of JavaScript with?',
-        answers: [
-            { answer1: '.JS', correct: false },
-            { answer2: '.Js', correct: false },
-            { answer3: '.js', correct: true },
-            { answer4: '.jS', correct: false }
-            // correct: answer3
-        ]
-    },
-    {
-        question: 'What should you end a line of JavaScript with?',
-        answers: [
-            { answer1: ',', correct: false },
-            { answer2: ';', correct: true },
-            { answer3: ':', correct: false },
-            { answer4: '/', correct: false }
 
-        ]
+        answer1: '.JS', correct: false,
+        answer2: '.Js', correct: false,
+        answer3: '.js', correct: true,
+        answer4: '.jS', correct: false
+
     }
 ];
 let currentQuestionIndex = 0;
 let currentQuestion = questions[currentQuestionIndex];
-let finalQuestion = questions.length -1;
+let finalQuestion = questions.length - 1;
 let seconds = 75;
-
 
 //Starts the game 
 function startGame() {
@@ -107,54 +97,40 @@ function timer() {
     );
 };
 //Function for the questions
-function nextQuestion(){
+function nextQuestion() {
     questionEl.innerHTML = " ";
     questionEl.textContent = currentQuestion.question;
-    for( let i = 0; i < currentQuestion.length; i++){
-        
-
-        
+    for (let i = 0; i < questions.length; i++) {
+    currentQuestionIndex.textContent = currentQuestion.question;
+    button1.innerHTML = currentQuestion.answer1;
+    button2.innerHTML = currentQuestion.answer2;
+    button3.innerHTML = currentQuestion.answer3;
+    button4.innerHTML = currentQuestion.answer4;
     }
-    //I want to change the background colour for when it is selected if it's right green, wrong red
-   //if(correct === true){
-    //button.style.backgroundColor = ".correct";
-    //button.style.backgroundColor = " ";
-   //}
-   //else{
-    //button.style.backgroundColor = ".wrong";
-    //button.style.backgroundColor = " ";
-   //}
-   //If it is the last question to go to the score page with the score
-   if (currentQuestionIndex === finalQuestion) {
-    endGame();
-
-}}
-
-function nexdtQuestion() {
-    let i = questions.length;
-    do {
-        let random = Math.floor(Math.random() * questions.length);
-        questionEl.textContent = questions[random].question;
-    } while (i < questions.length);
-}
-
-function endGame(){
-    
-}
-
-//clearInterval(timerInterval);
-
-
-
-
-
-function ddshowQuestion(question) {
-    question.textContent = question.question;
-    question.answers.forEach(answer => {
-        button1.innerText = answer;
+    //If it is the last question to go to the score page with the score
+    button.addEventListener('click', function(){
+        if(answer === true){
+            button.style.backgroundColor = "green";
+           // button.style.backgroundColor = " ";
+        } else {
+            button.style.backgroundColor = "red";
+            //subtract by 10 seconds
+            seconds -=10;
+           // button.style.backgroundColor = " ";
+        }
+     currentQuestionIndex++;
     })
+    if (currentQuestionIndex === finalQuestion) {
+        endGame();
 
+    }
 }
+
+function endGame() {
+clearInterval(timerInterval);
+}
+
+
 function replayQuiz() {
     seconds = 75;
     currentQuestionIndex = 0;
