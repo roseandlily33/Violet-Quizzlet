@@ -4,14 +4,11 @@ let questionCont = document.getElementById('main-questions');
 let beginningEl = document.getElementById('intro');
 let questionEl = document.getElementById('question');
 let buttonCont = document.getElementById('answer-buttons');
-let button1 = document.getElementById('btn-1');
-let button2 = document.getElementById('btn-2');
-let button3 = document.getElementById('btn-3');
-let button4 = document.getElementById('btn-4');
+//let button = document.querySelector('button');
 let timerEl = document.getElementById('timer');
-let currentQuestion = questions[currentQuestionIndex];
-let currentQuestionIndex = 0;
-let seconds = 75;
+let finalEl = document.getElementById('final');
+let scorePage = document.getElementById('score-page');
+
 
 //Starts the game on click
 startBtn.addEventListener('click', startGame);
@@ -19,64 +16,74 @@ startBtn.addEventListener('click', startGame);
 //Questions for the quiz
 const questions = [
     {
-        question: 'What direction does align-items align on?',
-        answer1: 'vertical',
-        answer2: 'horizontal',
-        answer3: 'center',
-        answer4: 'z-index',
-        correct: answer1
+        question: 'What direction does align-items align on if your aligning on the horizontal axis?',
+        answers: [
+            { answer1: 'vertical', correct: true },
+            { answer2: 'horizontal', correct: false },
+            { answer3: 'center', correct: false },
+            { answer4: 'z-index', correct: false }
+        ]
     },
     {
         question: 'In this array how would you access apple: let fruit = [banana, mango, peach, apple, plum]',
-        answer1: '[2]',
-        answer2: '[0]',
-        answer3: '[3]',
-        answer4: '[4]', 
-        correct: answer2
+        answers: [
+            { answer1: '[2]', correct: false },
+            { answer2: '[0]', correct: true },
+            { answer3: '[3]', correct: false },
+            { answer4: '[4]', correct: false }
+        ]
     },
     {
-        question: 'Which one of these means absolutley not?',
-        answer1: '!=',
-        answer2: '>=',
-        answer3: '!==',
-        answer4: '===',
-        correct: answer3
-
+        question: 'Which one of these means absolutley not?', answers: [
+            { answer1: '!=', correct: false },
+            { answer2: '>=', correct: false },
+            { answer3: '!==', correct: true },
+            { answer4: '===', correct: false }
+        ]
     },
     {
-        question: 'What can arrays store in JavaScript?',
-        answer1: 'Number',
-        answer2: 'String',
-        answer3: 'Other Arrays',
-        answer4: 'All of the above',
-        correct: answer4
+        question: 'What can arrays store in JavaScript?', answers: [
 
-    },
-    {
-        question: 'What should you always end a line of JavaScript with?',
+            { answer1: 'Number', correct: false },
+            { answer2: 'String', correct: false },
+            { answer3: 'Other Arrays', correct: false },
+            { answer4: 'All of the above', correct: true }
 
-        answer1: '.JS',
-        answer2: '.Js',
-        answer3: '.js',
-        answer4: '.jS',
-        correct: answer3
-
+        ]
     },
     {
         question: 'What should you always end a line of JavaScript with?',
-        answer: ',',
-        answer: ';',
-        answer: ':',
-        answer: '/', correct: answer2
+        answers: [
+            { answer1: '.JS', correct: false },
+            { answer2: '.Js', correct: false },
+            { answer3: '.js', correct: true },
+            { answer4: '.jS', correct: false }
+            // correct: answer3
+        ]
+    },
+    {
+        question: 'What should you end a line of JavaScript with?',
+        answers: [
+            { answer1: ',', correct: false },
+            { answer2: ';', correct: true },
+            { answer3: ':', correct: false },
+            { answer4: '/', correct: false }
+
+        ]
     }
 ];
+let currentQuestionIndex = 0;
+let currentQuestion = questions[currentQuestionIndex];
+let finalQuestion = questions.length -1;
+let seconds = 75;
+
 
 //Starts the game 
 function startGame() {
     //Hides the first 2 elements on the screen, and shows the question container
-    //By doing this my goal was to have it nicely styled with HTML, that way i didn't have to worry about adding style.display
+    //By doing this my goal was to have it nicely styled with HTML, that way i didn't have to worry about adding style.display too much
     startBtn.classList.add('hide');
-    beginning.classList.add('hide');
+    beginningEl.classList.add('hide');
     questionCont.classList.remove('hide');
     //Brings you to the question page
     nextQuestion();
@@ -100,17 +107,43 @@ function timer() {
     );
 };
 //Function for the questions
-function nextQuestion() {
+function nextQuestion(){
+    questionEl.innerHTML = " ";
     questionEl.textContent = currentQuestion.question;
+    for( let i = 0; i < currentQuestion.length; i++){
+        
 
+        
+    }
+    //I want to change the background colour for when it is selected if it's right green, wrong red
+   //if(correct === true){
+    //button.style.backgroundColor = ".correct";
+    //button.style.backgroundColor = " ";
+   //}
+   //else{
+    //button.style.backgroundColor = ".wrong";
+    //button.style.backgroundColor = " ";
+   //}
+   //If it is the last question to go to the score page with the score
+   if (currentQuestionIndex === finalQuestion) {
+    endGame();
 
+}}
+
+function nexdtQuestion() {
+    let i = questions.length;
+    do {
+        let random = Math.floor(Math.random() * questions.length);
+        questionEl.textContent = questions[random].question;
+    } while (i < questions.length);
 }
-//Function for the end score page
-function scorePage() {
-    //Need to make the elements and display them here
-    clearInterval(timerInterval);
 
+function endGame(){
+    
 }
+
+//clearInterval(timerInterval);
+
 
 
 
@@ -122,17 +155,7 @@ function ddshowQuestion(question) {
     })
 
 }
-function ddnextQuestion() {
-    for (let i = 0; i < questions.length; i++) {
-        let random = Math.floor(Math.random() * questions.length);
-        question.textContent = questions[random].question;
-    }
-
+function replayQuiz() {
+    seconds = 75;
+    currentQuestionIndex = 0;
 }
-
-
-function selectAnswer() {
-    //if(answer.correct){
-    //button1.dataset.correct = answer.correct
-}
-//}

@@ -55,7 +55,7 @@ body{
 }
 
 /* Intro: */
-#intro{
+#intro, #final{
     text-align: center;
     margin: 40px 30px;
     padding: 2em;
@@ -96,7 +96,7 @@ grid-template-columns: 1fr 1fr;
 gap: 2em;
 }
 
-#btn-1, #btn-2, #btn-3, #btn-4{
+button{
     background-color: var(--violet);
     color: var(--letters);
     font-size: var(--answers);
@@ -106,12 +106,65 @@ gap: 2em;
 
 
 }
+/* End page */
+#all-done, #hs{
+    font-size: var(--questions);
+    text-align: left;
+    font-weight: 700;
+}
+#score{
+    text-align: left;
+    font-weight: 400;
+    font-size: var(--answers);
+    padding-top: 0.5em;
+
+}
+#row{
+    display: flex;
+    flex-direction: row;
+    font-weight: 400;
+    padding-top: 1.2em;
+}
+#enterInit{
+    padding-right: 0.6em;
+    padding-top: 0.2em;
+    
+}
+#inputInit{
+    border: var(--violet) 1px solid;
+    border-radius: 10px;
+    padding: 0.2em;
+}
+
+#submitInit, #back, #clear{
+    border: none;
+    background-color: var(--violet);
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-left: 1em;
+    color: #fff;
+}
+
+
+
+/* High Score Page */
+#score-page{
+    
+}
+
+
 /* hover styles: */
-#start-btn:hover,#btn-1:hover, #btn-2:hover, #btn-3:hover, #btn-4:hover{
+#start-btn:hover,button:hover, #submitInit:hover, #back:hover, #clear:hover{
     background-color: var(--buttonHover);
     border: 1px solid #FFF;
 }
 
 .hide{
     display: none;
+}
+.correct{
+    background-color: var(--green);
+}
+.wrong{
+    background-color: var(--red);
 }
