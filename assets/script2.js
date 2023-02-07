@@ -15,24 +15,41 @@ let clearScores = document.getElementById('clear');
 //My Questions: 
 const questions = [
     {
-        question: 'What direction does align-items align on if your aligning on the horizontal axis?',
-        choices: [ 'vertical', 'horiztonal', 'center', 'z-index'],
-        correct: 'vertical'
+        question: 'What tag is used to attatch JavaScript to Html',
+        choices: ['<script>', '<JavaScript>', '<JScript', '<java>'],
+        correct: '<script'
     },
     {
         question: 'In this array how would you access apple: let fruit = [banana, mango, peach, apple, plum]',
-        choices: ['[0]', '[1]', ['2'], ['3'], ],
+        choices: ['[0]', '[1]', '[2]', '[3]'],
         correct: '[3]'
     },
-    { question: 'Which of these operators means absolutley not?',
-    choices: [ '==', '!=', '&&', '!=='],
-    correct: '!=='
+    {
+        question: 'Which of these operators means absolutley not?',
+        choices: ['==', '!=', '&&', '!=='],
+        correct: '!=='
+
+    },
+    {
+        question: 'Which one of these is not a math method?',
+        choices: ['.substr()', '.round()', '.floor()', '.random()'],
+        correct: '.substr()'
 
     },
     {
         question: 'What can arrays store in JavaScript?',
-        choices: [ 'Numbers', 'Booleans', 'Strings', 'All of the above'],
+        choices: ['Numbers', 'Booleans', 'Strings', 'All of the above'],
         correct: 'All of the above'
+    },
+    {
+        question: 'Which method takes the first one off of an array?',
+        choices: ['.shift()', '.unshift()', '.pop()', '.push()'],
+        correct: '.shift()'
+    },
+    {
+        question: 'Which method joins 2 arrays together?',
+        choices: ['.join()', '.push()', '.substr()', '.concat()'],
+        correct: '.concat()'
     }
 ];
 //Variables:
@@ -58,12 +75,13 @@ function startGame() {
 }
 //Timer function:
 function timer() {
-     timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         seconds--;
         timerEl.textContent = 'Time left: ' + seconds;
         if (seconds === 0) {
             clearInterval(timerInterval);
             finalScore();
+            return seconds;
         }
     }, 1000
     );
@@ -71,77 +89,80 @@ function timer() {
 
 //Goes through the questions:
 function nextQuestion() {
-    if(currentQuestionIndex === finalQuestion){
+    if (currentQuestionIndex === finalQuestion) {
         finalScore();
         return;
-    } else if(seconds === 0){
+    } else if (seconds === 0) {
         clearInterval(timerInterval);
         finalScore();
     }
-     else{
-    
-    buttonCont.innerHTML = "";
-    let currentQuestion = questions[currentQuestionIndex];
-    questionEl.textContent = currentQuestion.question;
+    else {
 
-    currentQuestion.choices.forEach(answer =>{
-    let button = document.createElement('button');
-    button.textContent = answer;
-    buttonCont.appendChild(button);
-    
-    button.addEventListener('click',function(){
-        if(answer == currentQuestion.correct){
-           seconds;
-        } else {
-          seconds -= 10 ;
-        }
-        currentQuestionIndex++;
-     nextQuestion();
-    })});}}
-  
-    //Shows the final score and stops the timer:
-   function finalScore(){
+        buttonCont.innerHTML = "";
+        let currentQuestion = questions[currentQuestionIndex];
+        questionEl.textContent = currentQuestion.question;
+
+        currentQuestion.choices.forEach(answer => {
+            let button = document.createElement('button');
+            button.textContent = answer;
+            buttonCont.appendChild(button);
+
+            button.addEventListener('click', function () {
+                if (answer == currentQuestion.correct) {
+                    seconds;
+                } else {
+                    seconds -= 10;
+                }
+                currentQuestionIndex++;
+                nextQuestion();
+            })
+        });
+    }
+}
+
+//Shows the final score and stops the timer:
+function finalScore() {
     questionCont.classList.add('hide');
     finalEl.classList.remove('hide');
     clearInterval(timerInterval);
-  
-   }
-    //JSON parses back through to show the scores on the leaderboard:
-   function scores(){
+
+}
+//JSON parses back through to show the scores on the leaderboard:
+function scores() {
     finalEl.classList.add('hide');
     scorePage.classList.remove('hide');
     var returnedScore = JSON.parse(localStorage.getItem('score'));
-    if(returnedScore !== null){
+    if (returnedScore !== null) {
         returnedScore.forEach(person => {
-        let name = document.createElement('h4');
-        name.textContent = person.initials + '  -  ' + person.score;
-        scoresCont.appendChild(name);
+            let name = document.createElement('h4');
+            name.textContent = person.initials + '  -  ' + person.score;
+            scoresCont.appendChild(name);
         })
-    } else { return;} 
-   } 
+    } else { return; }
+}
 
 //Submits the score to local storage with name:
-   submitBtn.addEventListener('click', function(e){
+submitBtn.addEventListener('click', function (e) {
     e.preventDefault();
-   //console.log(initials.value);
+    //console.log(initials.value);
     var data = {
         initials: initials.value,
         score: seconds
     }
     //Pushes data to local storage:
     highScores.push(data);
-    localStorage.setItem('score',JSON.stringify(highScores));
+    localStorage.setItem('score', JSON.stringify(highScores));
     scores();
 })
-   //Starts the quiz over:
-   startOver.addEventListener('click', function(){
+//Starts the quiz over:
+startOver.addEventListener('click', function () {
     window.location.href = "index.html";
-   });
 
-    //Clears the scores when pressed:
-   clearScores.addEventListener('click', function(){
+});
+
+//Clears the scores when pressed:
+clearScores.addEventListener('click', function () {
     //highScores = [];
     localStorage.clear('returnedScore');
     scoresCont.innerHTML = "";
-   })
-  
+})
