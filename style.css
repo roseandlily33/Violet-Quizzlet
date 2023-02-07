@@ -112,7 +112,7 @@ button{
     color: var(--letters);
     font-size: var(--answers);
     border: none;
-    padding: 1em 3em;
+    padding: 1em;
     border-radius: 25px;
 
 
