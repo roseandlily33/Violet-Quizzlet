@@ -2,7 +2,11 @@
 Week 4 project was to build a coding quiz challenge, using HTML, CSS, JavaScript, and Web API's. It should have a multiple questions, a home page, high score page, all done page, and the question page, where there will be new questions. 
 
 ## Screenshots:
-Coming Soon
+<img width="1049" alt="Screenshot 2023-02-07 at 2 38 37 PM" src="https://user-images.githubusercontent.com/109821108/217336756-4a05b31f-dddf-4fc3-a6b1-b076c3377e10.png">
+<img width="1023" alt="Screenshot 2023-02-07 at 2 38 44 PM" src="https://user-images.githubusercontent.com/109821108/217336771-f5771ae7-afd3-47e7-95c6-c71c80a08deb.png">
+<img width="1028" alt="Screenshot 2023-02-07 at 2 38 51 PM" src="https://user-images.githubusercontent.com/109821108/217336791-e8ad28fd-9e4f-417c-bb50-b0359d6b43a0.png">
+<img width="1030" alt="Screenshot 2023-02-07 at 2 38 58 PM" src="https://user-images.githubusercontent.com/109821108/217336801-978f70b2-1ee8-4525-bf8a-dfa861c6422a.png">
+
 
 ## URL Link:
 Coming Soon
