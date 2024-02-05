@@ -11,13 +11,14 @@ let submitBtn = document.getElementById('submitInit');
 let scoresCont = document.getElementById('scores');
 let startOver = document.getElementById('back');
 let clearScores = document.getElementById('clear');
+let container = document.getElementById('container');
 
 //My Questions: 
 const questions = [
     {
         question: 'What tag is used to attatch JavaScript to Html',
         choices: ['<script>', '<JavaScript>', '<JScript', '<java>'],
-        correct: '<script'
+        correct: '<script>'
     },
     {
         question: 'In this array how would you access apple: let fruit = [banana, mango, peach, apple, plum]',
@@ -52,6 +53,7 @@ const questions = [
         correct: '.concat()'
     }
 ];
+
 //Variables:
 let currentQuestionIndex = 0;
 
@@ -68,6 +70,7 @@ startBtn.addEventListener('click', startGame);
 //Start Game function:
 function startGame() {
     startBtn.classList.add('hide');
+    
     beginningEl.classList.add('hide');
     questionCont.classList.remove('hide');
     timer();
@@ -97,24 +100,36 @@ function nextQuestion() {
         finalScore();
     }
     else {
-
         buttonCont.innerHTML = "";
+
         let currentQuestion = questions[currentQuestionIndex];
+
         questionEl.textContent = currentQuestion.question;
 
         currentQuestion.choices.forEach(answer => {
             let button = document.createElement('button');
             button.textContent = answer;
+            button.setAttribute('value', answer)
             buttonCont.appendChild(button);
 
-            button.addEventListener('click', function () {
-                if (answer == currentQuestion.correct) {
+            button.addEventListener('click', function (e) {
+                if (e.target.value == questions[currentQuestionIndex].correct) {
+                    button.setAttribute('style', 'background-color: green');
+                    button.textContent = 'correct'
                     seconds;
+
                 } else {
+                    console.log('incorrect');
+                    button.setAttribute('style', 'background-color: red');
+                    button.textContent = 'incorrect';
                     seconds -= 10;
                 }
                 currentQuestionIndex++;
-                nextQuestion();
+                setTimeout(function(){
+                    console.log('delaying');
+                    nextQuestion();
+                }, 1500);
+                
             })
         });
     }
