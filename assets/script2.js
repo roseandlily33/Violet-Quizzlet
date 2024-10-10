@@ -12,6 +12,7 @@ let scoresCont = document.getElementById('scores');
 let startOver = document.getElementById('back');
 let clearScores = document.getElementById('clear');
 let container = document.getElementById('container');
+let finalScore = document.getElementById('finalScore')
 
 //My Questions: 
 const questions = [
@@ -70,7 +71,6 @@ startBtn.addEventListener('click', startGame);
 //Start Game function:
 function startGame() {
     startBtn.classList.add('hide');
-    
     beginningEl.classList.add('hide');
     questionCont.classList.remove('hide');
     timer();
@@ -101,23 +101,18 @@ function nextQuestion() {
     }
     else {
         buttonCont.innerHTML = "";
-
         let currentQuestion = questions[currentQuestionIndex];
-
         questionEl.textContent = currentQuestion.question;
-
         currentQuestion.choices.forEach(answer => {
             let button = document.createElement('button');
             button.textContent = answer;
             button.setAttribute('value', answer)
             buttonCont.appendChild(button);
-
             button.addEventListener('click', function (e) {
                 if (e.target.value == questions[currentQuestionIndex].correct) {
                     button.setAttribute('style', 'background-color: green');
                     button.textContent = 'correct'
                     seconds;
-
                 } else {
                     console.log('incorrect');
                     button.setAttribute('style', 'background-color: red');
@@ -146,6 +141,7 @@ function finalScore() {
 function scores() {
     finalEl.classList.add('hide');
     scorePage.classList.remove('hide');
+    finalScore.textContent = score;
     var returnedScore = JSON.parse(localStorage.getItem('score'));
     if (returnedScore !== null) {
         returnedScore.forEach(person => {
